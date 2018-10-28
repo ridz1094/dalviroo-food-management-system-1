@@ -7,6 +7,6 @@
   function ReportCtrl($scope, $sce, $state, $mdDialog, $mdToast, orderLineItems, OrderLineItemService) {
     var ReportCtrlVM = this;
     ReportCtrlVM.orderLineItems = orderLineItems;
-    ReportCtrlVM.orderLineItemPresent = ReportCtrlVM.orderLineItems != null ? true : false;
+    ReportCtrlVM.orderLineItemPresent = ReportCtrlVM.orderLineItems.length > 0;
  }
 })();
