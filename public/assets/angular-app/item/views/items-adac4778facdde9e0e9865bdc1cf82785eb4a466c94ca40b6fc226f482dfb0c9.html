@@ -1,0 +1,44 @@
+<style>
+  .search-input{
+    margin-bottom: -20px;
+    margin-top: 10px;
+  }
+  .search-div{
+    margin: 15px;
+  }
+</style>
+<md-content md-theme="altTheme">
+  <div>
+  <div layout="row" class="search-div">
+  <md-input-container flex="80" class="search-input">
+    <input ng-model="ItemCtrlVM.search"/>
+    <span style="color: grey;">*You can search multiple tags as comma seperated</span>
+  </md-input-container>
+  <md-button class="md-primary md-raised" ng-click="ItemCtrlVM.filterItems()">Search By Tags</md-button>
+  </div>
+<md-card ng-repeat="item in ItemCtrlVM.items" ng-if="ItemCtrlVM.itemPresent">
+      <md-card-content>
+        <div layout="row" layout-align="space-between">
+          <div>
+              <span style="font-weight:bold;">{{item.name | uppercase}}</span>
+          </div>
+          <div layout="row">
+            <md-button id="close" class="md-icon-button" style="margin-top: -15px;" ng-click="ItemCtrlVM.showAdvanced($event,item,$index)">
+              <md-icon md-svg-src="images/pencil.svg" class="ng-scope" role="img" aria-hidden="true"></md-icon>
+              <md-tooltip>Edit</md-tooltip>
+            </md-button>
+          </div>
+        </div>
+        <span style="color:gray;font-size:14px;text-align:justify">{{item.tag_list}} Rs. {{item.price}}</span>
+      </md-card-content>
+    </md-card>
+    <div ng-if="!ItemCtrlVM.itemPresent" layout="row" layout-align="center">
+      No items found
+    </div>
+  </div>
+<button class="md-fab md-fab-bottom-right docs-scroll-fab md-button md-ink-ripple scrolling" type="button" aria-label="Add" ng-click="ItemCtrlVM.showAdvanced($event,null,null)">
+    <md-icon md-svg-src="images/plus.svg"  role="img" aria-hidden="true"></md-icon>
+    <md-tooltip md-direction="top">Add Item</md-tooltip>
+</button>
+
+</md-content>

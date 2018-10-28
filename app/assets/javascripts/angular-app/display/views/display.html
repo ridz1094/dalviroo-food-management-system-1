@@ -1,0 +1,52 @@
+<md-content md-theme="altTheme" style="min-height: calc(100vh - 120px);">
+  <div>
+    <iframe id="attachment_iframe" style="display:none;"></iframe>
+    <div layout="row" layout-align="end">
+      <i class="fa fa-download"></i><a target="_self" style="cursor: pointer; margin: 10px;" ng-click="DisplayCtrlVM.downloadReport()">Download Report</a>
+    </div>
+<md-card  ng-if="DisplayCtrlVM.orderLineItemPresent">
+      <md-card-content>
+        <h3 layout="row" layout-align="space-between">
+          <div flex="20">
+              Item
+          </div>
+          <div flex="20">
+            Quantity
+          </div>
+          <div flex="20">
+            Created Till Now
+          </div>
+          <div flex="20">
+            Predicted
+          </div>
+          <div flex="20">
+            Status
+          </div>
+        </h3>
+        <div layout="row" layout-align="space-between" ng-repeat="orderLineItem in DisplayCtrlVM.orderLineItems">
+          <div flex="20">
+              {{orderLineItem.item_name | uppercase}}
+          </div>
+          <div flex="20">
+            {{orderLineItem.total_quantity}}
+          </div>
+          <div flex="20">
+            {{orderLineItem.created_till_now}}
+          </div>
+          <div flex="20">
+            {{orderLineItem.item_predicted_value}}
+          </div>
+          <div flex="20">
+            <md-button style="margin: -10px 0px 0px 0px; text-align: left;" ng-if="orderLineItem.total_quantity > 0"
+              class="md-primary" ng-disabled="" ng-click="DisplayCtrlVM.changeStatus(orderLineItem.item_id, $index)">
+              Done
+            </md-button>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+    <div ng-if="!DisplayCtrlVM.orderLineItemPresent" layout="row" layout-align="center">
+      No items found to prepare
+    </div>
+  </div>
+</md-content>

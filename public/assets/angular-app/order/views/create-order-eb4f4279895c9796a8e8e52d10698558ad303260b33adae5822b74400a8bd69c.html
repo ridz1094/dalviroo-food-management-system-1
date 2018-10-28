@@ -1,0 +1,39 @@
+<md-dialog aria-label="Order" flex="50">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Place Order</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div ng-class="{ 'form-submitted': formSubmitted }">
+          <form name="orderForm" valdr-type="AddItem" novalidate on-navigate-away-strategy='none'>
+            <md-list>
+              <md-list-item ng-repeat="item in CreateOrderCtrlVM.items" layout="row">
+              <div layout="column">
+                <div>{{$index+1}}. {{item.name}} - Rs {{item.price}} {{item.tag_list}}</div>
+                <div>
+                  <md-input-container style="margin:0px;" layout="row" md-no-float>
+                    <input placeholder="Insert Quantity" ng-model="item.quantity" ng-change="CreateOrderCtrlVM.calculateAmount()" type="number" />
+                  </md-input-container>
+                </div>
+              </div>
+            </md-list-item>
+          </md-list>
+          </form>
+      </div>
+      <div layout="row" layout-align="space-around center">
+        <div>Amount: Rs {{CreateOrderCtrlVM.order.amount | number:2}}</div>
+        <div>Service Tax: Rs {{CreateOrderCtrlVM.order.service_tax | number:2}}</div>
+        <div>Total Amount: Rs {{CreateOrderCtrlVM.order.total_amount | number:2}}</div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button class="md-raised" ng-click="CreateOrderCtrlVM.cancel()">
+       cancel
+      </md-button>
+      <md-button class="md-primary md-raised" ng-click="CreateOrderCtrlVM.saveOrder(orderForm)">
+        Save
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

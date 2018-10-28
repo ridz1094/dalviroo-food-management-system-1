@@ -1,0 +1,18 @@
+<div ng-cloak>
+  <md-content>
+    <md-toolbar class="md-whiteframe-1dp">
+      <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+        <h4>POS System</h4>
+        <div layout="column">
+          <h6 style="margin: 0px; text-align: center;">{{HomeCtrlVM.user.name | uppercase}}</h6>
+          <md-button ng-click="HomeCtrlVM.logout()">Logout</md-button>
+        </div>
+      </div>
+    </md-toolbar>
+    <md-tabs style="min-height: calc(100vh - 70px);" md-selected="selectedIndex" md-border-bottom md-autoselect md-swipe-content>
+      <md-tab ng-repeat="tab in HomeCtrlVM.tabs" label="{{tab.title}}" ng-click="HomeCtrlVM.goTo(tab.state)">
+        <ui-view></ui-view>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>

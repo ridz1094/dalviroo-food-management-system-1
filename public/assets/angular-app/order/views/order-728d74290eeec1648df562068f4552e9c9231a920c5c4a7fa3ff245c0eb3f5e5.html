@@ -1,0 +1,27 @@
+<md-dialog flex="50">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h3>ORDER#{{OrderCtrlVM.order.id}}</h3>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <md-subheader>Order Items</md-subheader>
+    <md-list>
+      <md-list-item ng-repeat="item in OrderCtrlVM.order.order_line_items" layout="row">
+        <p>{{$index+1}}. {{item.item_quantity}} of {{item.item_name}} each of Rs. {{item.item_price}}</p>
+      </md-list-item>
+    </md-list>
+  <div layout="row" layout-align="space-between center" layout-margin>
+    <span><b>Amount: </b>Rs {{OrderCtrlVM.order.amount}}</span>
+    <span><b>Service Tax: </b>Rs {{OrderCtrlVM.order.service_tax}}</span>
+    <span><b>Total Amount: </b>Rs {{OrderCtrlVM.order.total_amount}}</span>
+  </div>
+
+<md-dialog-content>
+  <md-dialog-actions layout="row">
+    <span flex></span>
+    <md-button ng-click="OrderCtrlVM.close()">
+      Close
+    </md-button>
+  </md-dialog-actions>
+</md-dialog>

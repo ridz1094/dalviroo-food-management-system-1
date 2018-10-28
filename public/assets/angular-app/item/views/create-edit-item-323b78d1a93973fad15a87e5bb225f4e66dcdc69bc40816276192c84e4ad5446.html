@@ -1,0 +1,45 @@
+<md-dialog aria-label="Item">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add/Edit Item</h2>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content" ng-class="{ 'form-submitted': formSubmitted }">
+          <form name="itemForm" valdr-type="AddItem" novalidate on-navigate-away-strategy='none'>
+            <div>
+    <md-input-container>
+      <label>Name</label>
+      <input ng-model="CreateEditItemCtrlVM.item.name">
+    </md-input-container>
+
+    <md-input-container>
+      <label>Price</label>
+      <input ng-model="CreateEditItemCtrlVM.item.price" type="number">
+    </md-input-container>
+  </div>
+  <div>
+<md-input-container>
+  <label>Tag List</label>
+  <input ng-model="CreateEditItemCtrlVM.item.tag_list" >
+  <span style="color: grey;">*You can insert multiple tags as comma seperated<span>
+</md-input-container>
+</div>
+</form>
+  </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button ng-click="CreateEditItemCtrlVM.deleteItem($event)">
+        Delete
+      </md-button>
+      <span flex></span>
+      <md-button class="md-raised" ng-click="CreateEditItemCtrlVM.cancel()">
+       cancel
+      </md-button>
+      <md-button class="md-primary md-raised" ng-click="CreateEditItemCtrlVM.saveItem(itemForm)">
+        Save
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

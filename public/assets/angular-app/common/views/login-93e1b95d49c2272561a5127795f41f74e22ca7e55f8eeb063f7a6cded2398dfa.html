@@ -1,0 +1,18 @@
+<div>
+    <md-content>
+      <md-toolbar class="md-whiteframe-1dp">
+        <div class="md-toolbar-tools" layout="row" layout-align="left center">
+          <h4>POS System</h4>
+        </div>
+      </md-toolbar>
+  <h1 layout-align="center">Log In</h1>
+  <form ng-submit="login()">
+    <md-input-container>
+      <input type="email" placeholder="Email" ng-model="user.email">
+    </md-input-container>
+    <md-input-container>
+      <input type="password" placeholder="Password" ng-model="user.password">
+    </md-input-container>
+    <md-button type="submit" class="md-primary md-raised">Log In</md-button>
+  </form>
+</div>

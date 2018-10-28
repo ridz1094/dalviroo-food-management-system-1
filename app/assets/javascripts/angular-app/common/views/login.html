@@ -1,0 +1,39 @@
+
+<style>
+.loginBox {
+  max-width:  90%;
+  width: 500px
+}
+
+
+</style>
+
+<md-toolbar class="md-whiteframe-1dp">
+  <div class="md-toolbar-tools" layout="row" layout-align="left center">
+    <h4>Dalviroo Food Management System</h4>
+  </div>
+</md-toolbar>
+<div layout="column" layout-align="center center" layout-fill="layout-fill">
+    <div layout="column" class="loginBox md-whiteframe-z1">
+      <md-toolbar>
+        <h2 class="md-toolbar-tools"><span>Login</span></h2>
+      </md-toolbar>
+      <form ng-submit="login()">
+        <md-content layout="column" class="md-padding">
+          <md-input-container>
+            <label>Username</label>
+            <input required type="text" ng-model="user.email" name="email" />
+
+          </md-input-container>
+          <md-input-container>
+            <label>Password</label>
+            <input required type="password" ng-model="user.password" name="password" />
+
+          </md-input-container>
+          <div layout="row" layout-align="center">
+            <md-button type="submit" class="md-raised md-primary">Login</md-button>
+          </div>
+        </md-content>
+      </form>
+    </div>
+</div>

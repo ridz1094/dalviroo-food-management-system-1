@@ -1,0 +1,33 @@
+<md-content md-theme="altTheme" style="min-height: calc(100vh - 120px);">
+  <div>
+    <md-card  ng-if="ReportCtrlVM.orderLineItemPresent">
+      <md-card-content>
+        <h3 layout="row" layout-align="space-between">
+          <div flex="60">
+            Item
+          </div>
+          <div flex="20">
+            Produced
+          </div>
+          <div flex="20">
+            Predicted Value
+          </div>
+        </h3>
+        <div layout="row" layout-align="space-between" ng-repeat="orderLineItem in ReportCtrlVM.orderLineItems">
+          <div flex="60">
+              <b>{{$index+1}}.</b> {{orderLineItem.item_name | uppercase}}
+          </div>
+          <div flex="20">
+            {{orderLineItem.total_quantity}}
+          </div>
+          <div flex="20">
+            {{orderLineItem.item_predicted_value}}
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+    <div ng-if="!ReportCtrlVM.orderLineItemPresent" layout="row" layout-align="center center">
+      No items prepared today
+    </div>
+  </div>
+</md-content>
